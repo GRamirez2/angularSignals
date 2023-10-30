@@ -3,12 +3,14 @@
     <ng-container *ngFor="let user of users(); index as i; trackBy: trackByFn">
       <div style="display: flex; align-items: center">
         <h3
+          class="_userName"
           style="width: 205px"
           [ngClass]="{ green_font: selectedUserId() === user.id }"
         >
           {{ user.name }}
         </h3>
         <button
+          id="{{ user.id }}"
           *ngIf="user.id !== selectedUserId()"
           style="margin-left: 1rem"
           mat-mini-fab

@@ -14,7 +14,12 @@
   <div style="display: flex; flex-direction: column; margin-left: 5rem">
     <div *ngIf="selectedUserId() !== 0" style="font-weight: bold">
       {{ users()[selectedUserId() - 1].name }}'s Tasks
-      <p>Task Name -- Complete Status {{ completedCount() }}</p>
+      <p>
+        Task Name -- Complete Status
+        <span *ngIf="completedCount()" data-testid="_completedTasks">{{
+          completedCount()
+        }}</span>
+      </p>
     </div>
     <ol>
       <ng-container
@@ -49,6 +54,6 @@
 
   <!-- Signal Json -->
   <ng-container *ngIf="userTasks().length">
-    <pre>{{ userTasks() | json }}</pre>
+    <pre data-testid="_updatedJson">{{ userTasks() | json }}</pre>
   </ng-container>
 </div>
