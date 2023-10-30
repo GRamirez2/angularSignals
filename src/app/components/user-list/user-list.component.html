@@ -1,0 +1,27 @@
+<ng-container *ngIf="users().length">
+  <div class="containerCol">
+    <ng-container *ngFor="let user of users(); index as i; trackBy: trackByFn">
+      <div style="display: flex; align-items: center">
+        <h3
+          style="width: 205px"
+          [ngClass]="{ green_font: selectedUserId() === user.id }"
+        >
+          {{ user.name }}
+        </h3>
+        <button
+          *ngIf="user.id !== selectedUserId()"
+          style="margin-left: 1rem"
+          mat-mini-fab
+          color="primary"
+          (click)="onSelected(user.id)"
+        >
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Show tasks icon"
+            fontIcon="visibility"
+          ></mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

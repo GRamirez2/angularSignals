@@ -1,0 +1,7 @@
+<mat-form-field [ngStyle]="inputWidth" [formGroup]="theTask">
+  <mat-label for="task-name">Task Name:</mat-label>
+  <input matInput class="taskName" type="text" formControlName="name" />
+  <button matSuffix mat-icon-button aria-label="Clear" (click)="updateTask()">
+    <mat-icon>update</mat-icon>
+  </button>
+</mat-form-field>

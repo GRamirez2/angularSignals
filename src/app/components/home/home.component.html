@@ -1,0 +1,54 @@
+<h2 style="margin-left: 1rem">User List from api</h2>
+<div style="display: flex; margin-left: 1rem">
+  <!-- User List -->
+  <ng-container>
+    <app-user-list
+      [users]="users"
+      [selectedUserId]="selectedUserId"
+      selectUserRequest
+      (selectUserRequest)="onSelected($event)"
+    ></app-user-list>
+  </ng-container>
+
+  <!-- Task List -->
+  <div style="display: flex; flex-direction: column; margin-left: 5rem">
+    <div *ngIf="selectedUserId() !== 0" style="font-weight: bold">
+      {{ users()[selectedUserId() - 1].name }}'s Tasks
+      <p>Task Name -- Complete Status {{ completedCount() }}</p>
+    </div>
+    <ol>
+      <ng-container
+        *ngFor="let task of userTasks(); index as i; trackBy: trackByFn"
+      >
+        <span>
+          <li>
+            <app-form-list
+              [task]="task"
+              [id]="i"
+              (taskUpdateRequest)="handleTaskUpdateRequest($event)"
+            ></app-form-list>
+            <span>
+              <mat-slide-toggle
+                [checked]="task.completed"
+                [color]="color"
+                (click)="markComplete(task)"
+              >
+                <p *ngIf="!task.completed; else doneMsg" style="color: orange">
+                  Task incomplete
+                </p>
+                <ng-template #doneMsg
+                  ><p style="color: grey">Task complete</p></ng-template
+                >
+              </mat-slide-toggle>
+            </span>
+          </li>
+        </span>
+      </ng-container>
+    </ol>
+  </div>
+
+  <!-- Signal Json -->
+  <ng-container *ngIf="userTasks().length">
+    <pre>{{ userTasks() | json }}</pre>
+  </ng-container>
+</div>

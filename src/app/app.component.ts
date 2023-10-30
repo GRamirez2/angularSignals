@@ -4,16 +4,16 @@ import { Component } from "@angular/core";
   selector: "app-root",
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>Welcome to {{ title }}!</h1>
-      <a href="" class="list">Home</a><a href="about" class="list">About</a
-      ><a href="name" class="list">Name</a>
-    </div>
+    <div class="containerCol">
+      <div style="text-align:center" class="content">
+        <h1>{{ title }}</h1>
+        <a href="" class="list">Home</a><a href="about" class="list">About</a
+        ><a href="name" class="list">Name</a>
+      </div>
 
-    <router-outlet></router-outlet>
-
-    <div style="text-align:center" class="content">
-      <h1>Footer</h1>
+      <div class="containerRow">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   `,
   styles: [
@@ -21,9 +21,21 @@ import { Component } from "@angular/core";
       .list {
         margin-right: 10px;
       }
+      .containerCol {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+      }
+      .containerRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 100%;
+      }
     `,
   ],
 })
 export class AppComponent {
-  title = "angularV16";
+  title = "Angular v16: Signals & Stand Alone Components";
 }

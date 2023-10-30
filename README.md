@@ -1,5 +1,9 @@
 # AngularV16
 
+## Common CLI commands
+
+ng g c <component-name> --standalone --skip-tests --dry-run
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
 
 ## Development server
