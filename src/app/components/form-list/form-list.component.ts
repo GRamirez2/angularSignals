@@ -31,6 +31,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatIconModule,
   ],
   templateUrl: "./form-list.component.html",
+  inputs: ["id", "task"],
   styles: [
     `
       .formSize {
@@ -43,8 +44,10 @@ import { MatIconModule } from "@angular/material/icon";
   ],
 })
 export class FormListComponent implements OnChanges {
-  @Input() task?: ToDo;
-  @Input() id!: number;
+  // @Input() task?: ToDo; // instead of writing the intput here you can add them to the component object
+  // @Input() id!: number;
+  task?: ToDo;
+  id!: number;
   @Output() taskUpdateRequest = new EventEmitter<any>();
 
   inputWidth: any = { width: "100px" };
