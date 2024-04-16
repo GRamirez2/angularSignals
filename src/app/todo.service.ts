@@ -34,11 +34,11 @@ export class TodoService {
 
   markComplete(task: ToDo) {
     // Long way:
-    // this.userTasks.update(tasks => tasks.map(t =>
-    //   t.id === task.id ? { ...t, completed: true } : t)
-    // );
-    // Short way:
-    this.userTasks.mutate(() => (task.completed = !task.completed));
+    this.userTasks.update((tasks) =>
+      tasks.map((t) => (t.id === task.id ? { ...t, completed: true } : t))
+    );
+    // Short way:// no longer works after v17
+    // this.userTasks.mutate(() => (task.completed = !task.completed));
     this.logger("Task Completion Update = ", task.id);
   }
 

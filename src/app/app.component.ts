@@ -37,5 +37,5 @@ import { Component } from "@angular/core";
   ],
 })
 export class AppComponent {
-  title = "Angular v16: Signals & Stand Alone Components";
+  title = "Angular v17: Signals & Stand Alone Components";
 }

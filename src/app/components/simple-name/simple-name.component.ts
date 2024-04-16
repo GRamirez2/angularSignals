@@ -58,7 +58,7 @@ export class SimpleNameComponent {
   }
 
   mutateSignal() {
-    this.name.mutate((value) => (value.middle = this.letterPicker()));
+    this.name.update((value) => ({ ...value, middle: this.letterPicker() }));
   }
   updateSignal() {
     this.numb.update((value) => value + 5);
